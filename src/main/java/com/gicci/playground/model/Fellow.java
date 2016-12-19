@@ -9,8 +9,9 @@ public class Fellow {
 	private String LastName;
 	private String nickName;
 	private String email;
-	private List<Community> ownerCommunities;
-	private List<Community> communities;
+	private Boolean isEnable;
+	private String password;
+	private List<FellowCommunity> communities;
 	private List<Sport> favouriteSports;
 	
 	public Fellow() {}
@@ -62,19 +63,27 @@ public class Fellow {
 		this.email = email;
 	}
 
-	public List<Community> getOwnerCommunities() {
-		return ownerCommunities;
+	public Boolean getIsEnable() {
+		return isEnable;
 	}
 
-	public void setOwnerCommunities(List<Community> ownerCommunities) {
-		this.ownerCommunities = ownerCommunities;
+	public void setIsEnable(Boolean isEnable) {
+		this.isEnable = isEnable;
 	}
 
-	public List<Community> getCommunities() {
+	public String getPassword() {
+		return password;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
+	}
+
+	public List<FellowCommunity> getCommunities() {
 		return communities;
 	}
 
-	public void setCommunities(List<Community> communities) {
+	public void setCommunities(List<FellowCommunity> communities) {
 		this.communities = communities;
 	}
 
@@ -114,7 +123,8 @@ public class Fellow {
 	@Override
 	public String toString() {
 		return "Fellow [id=" + id + ", firstName=" + firstName + ", LastName=" + LastName + ", nickName=" + nickName
-				+ ", email=" + email + "]";
+				+ ", email=" + email + ", isEnable=" + isEnable + ", password=" + password + ", communities="
+				+ communities + ", favouriteSports=" + favouriteSports + "]";
 	}
 
 }

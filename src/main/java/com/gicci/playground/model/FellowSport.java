@@ -1,19 +1,15 @@
 package com.gicci.playground.model;
 
-import java.util.List;
-
-public class Community {
+public class FellowSport {
 
 	private Integer id;
-	private String name;
+	private Fellow fellow;
 	private Sport sport;
-	private List<FellowCommunity> partners;
-	private List<CommunityAddress> addresses;
 	
-	public Community() {}
+	public FellowSport() {}
 	
-	public Community(String name, Sport sport) {
-		this.name = name;
+	public FellowSport(Fellow fellow, Sport sport) {
+		this.fellow = fellow;
 		this.sport = sport;
 	}
 
@@ -25,12 +21,12 @@ public class Community {
 		this.id = id;
 	}
 
-	public String getName() {
-		return name;
+	public Fellow getFellow() {
+		return fellow;
 	}
 
-	public void setName(String name) {
-		this.name = name;
+	public void setFellow(Fellow fellow) {
+		this.fellow = fellow;
 	}
 
 	public Sport getSport() {
@@ -39,22 +35,6 @@ public class Community {
 
 	public void setSport(Sport sport) {
 		this.sport = sport;
-	}
-
-	public List<FellowCommunity> getPartners() {
-		return partners;
-	}
-
-	public void setPartners(List<FellowCommunity> partners) {
-		this.partners = partners;
-	}
-
-	public List<CommunityAddress> getAddresses() {
-		return addresses;
-	}
-
-	public void setAddresses(List<CommunityAddress> addresses) {
-		this.addresses = addresses;
 	}
 
 	@Override
@@ -73,7 +53,7 @@ public class Community {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		Community other = (Community) obj;
+		FellowSport other = (FellowSport) obj;
 		if (id == null) {
 			if (other.id != null)
 				return false;
@@ -84,6 +64,6 @@ public class Community {
 
 	@Override
 	public String toString() {
-		return "Community [id=" + id + ", name=" + name + ", sport=" + sport + ", owner=" + owner + "]";
+		return "FellowSport [id=" + id + ", fellow=" + fellow + ", sport=" + sport + "]";
 	}
 }
