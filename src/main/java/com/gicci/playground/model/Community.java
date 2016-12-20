@@ -84,6 +84,6 @@ public class Community {
 
 	@Override
 	public String toString() {
-		return "Community [id=" + id + ", name=" + name + ", sport=" + sport + ", owner=" + owner + "]";
+		return "Community [id=" + id + ", name=" + name + ", sport=" + sport + "]";
 	}
 }
