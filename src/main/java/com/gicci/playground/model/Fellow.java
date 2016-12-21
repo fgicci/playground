@@ -12,7 +12,7 @@ public class Fellow {
 	private Boolean isEnable;
 	private String password;
 	private List<FellowCommunity> communities;
-	private List<Sport> favouriteSports;
+	private List<FellowSport> favouriteSports;
 	
 	public Fellow() {}
 
@@ -87,14 +87,38 @@ public class Fellow {
 		this.communities = communities;
 	}
 
-	public List<Sport> getFavouriteSports() {
+	public FellowCommunity addPartners(FellowCommunity community) {
+		getCommunities().add(community);
+		community.setFellow(this);
+		return community;
+	}
+	
+	public FellowCommunity removePartners(FellowCommunity community) {
+		getCommunities().remove(community);
+		community.setFellow(null);
+		return community;
+	}
+	
+	public List<FellowSport> getFavouriteSports() {
 		return favouriteSports;
 	}
 
-	public void setFavouriteSports(List<Sport> favouriteSports) {
+	public void setFavouriteSports(List<FellowSport> favouriteSports) {
 		this.favouriteSports = favouriteSports;
 	}
 
+	public FellowSport addFavouriteSport(FellowSport sport) {
+		getFavouriteSports().add(sport);
+		sport.setFellow(this);
+		return sport;
+	}
+	
+	public FellowSport removeFavouriteSport(FellowSport sport) {
+		getFavouriteSports().remove(sport);
+		sport.setFellow(null);
+		return sport;
+	}
+	
 	@Override
 	public int hashCode() {
 		final int prime = 31;

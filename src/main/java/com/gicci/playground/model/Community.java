@@ -49,6 +49,18 @@ public class Community {
 		this.partners = partners;
 	}
 
+	public FellowCommunity addPartners(FellowCommunity partner) {
+		getPartners().add(partner);
+		partner.setCommunity(this);
+		return partner;
+	}
+	
+	public FellowCommunity removePartners(FellowCommunity partner) {
+		getPartners().remove(partner);
+		partner.setCommunity(null);
+		return partner;
+	}
+	
 	public List<CommunityAddress> getAddresses() {
 		return addresses;
 	}
@@ -57,6 +69,18 @@ public class Community {
 		this.addresses = addresses;
 	}
 
+	public CommunityAddress addAddress(CommunityAddress address) {
+		getAddresses().add(address);
+		address.setCommunity(this);
+		return address;
+	}
+	
+	public CommunityAddress removeAddress(CommunityAddress address) {
+		getAddresses().remove(address);
+		address.setCommunity(null);
+		return address;
+	}
+	
 	@Override
 	public int hashCode() {
 		final int prime = 31;
