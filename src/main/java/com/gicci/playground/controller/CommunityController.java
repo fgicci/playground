@@ -11,13 +11,12 @@ import com.gicci.playground.model.Community;
 import com.gicci.playground.service.CommunityService;
 
 @RestController
-@RequestMapping("/community")
 public class CommunityController {
 
 	@Autowired
 	private CommunityService communityService;
 	
-	@RequestMapping(value = "/list", method = RequestMethod.GET)
+	@RequestMapping(value = "/community/list", method = RequestMethod.GET)
 	public List<Community> getCommunityList() {
 		return communityService.findAll();
 	}
