@@ -10,10 +10,12 @@ public class CommunityAddress {
 	private String county;
 	private String postCode;
 	private String country;
+	private Double latitude;
+	private Double longitude;
 	
 	public CommunityAddress() {}
 
-	public CommunityAddress(Community community, String addressLineOne, String addressLineTwo, String town, String county, String postCode, String country) {
+	public CommunityAddress(Community community, String addressLineOne, String addressLineTwo, String town, String county, String postCode, String country, Double latitude, Double longitude) {
 		this.community = community;
 		this.addressLineOne = addressLineOne;
 		this.addressLineTwo = addressLineTwo;
@@ -21,6 +23,8 @@ public class CommunityAddress {
 		this.county = county;
 		this.postCode = postCode;
 		this.country = country;
+		this.latitude = latitude;
+		this.longitude = longitude;
 	}
 
 	public Integer getId() {
@@ -85,6 +89,22 @@ public class CommunityAddress {
 
 	public void setCountry(String country) {
 		this.country = country;
+	}
+
+	public Double getLatitude() {
+		return latitude;
+	}
+
+	public void setLatitude(Double latitude) {
+		this.latitude = latitude;
+	}
+
+	public Double getLongitude() {
+		return longitude;
+	}
+
+	public void setLongitude(Double longitude) {
+		this.longitude = longitude;
 	}
 
 	@Override
