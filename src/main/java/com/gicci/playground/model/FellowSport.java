@@ -1,9 +1,24 @@
 package com.gicci.playground.model;
 
+import javax.persistence.Column;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.ManyToOne;
+
 public class FellowSport {
 
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
+	
+	@ManyToOne(optional = false)
 	private Fellow fellow;
+	
+	@Column(name = "sport")
+	@Enumerated(EnumType.STRING)
 	private Sport sport;
 	
 	public FellowSport() {}

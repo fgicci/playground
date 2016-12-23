@@ -1,16 +1,42 @@
 package com.gicci.playground.model;
 
+import javax.persistence.Column;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.ManyToOne;
+
 public class CommunityAddress {
 
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
+	
+	@ManyToOne(optional = false)
 	private Community community;
+	
+	@Column(name = "address_line_one")
 	private String addressLineOne;
+	
+	@Column(name = "address_line_one")
 	private String addressLineTwo;
+	
+	@Column(name = "town")
 	private String town;
+	
+	@Column(name = "county")
 	private String county;
+	
+	@Column(name = "post_code")
 	private String postCode;
+	
+	@Column(name = "country")
 	private String country;
+	
+	@Column(name = "latitude")
 	private Double latitude;
+	
+	@Column(name = "longitude")
 	private Double longitude;
 	
 	public CommunityAddress() {}

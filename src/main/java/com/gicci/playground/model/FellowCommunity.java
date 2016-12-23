@@ -2,12 +2,35 @@ package com.gicci.playground.model;
 
 import java.util.Date;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
+
+@Entity
+@Table(name = "fellow_community")
 public class FellowCommunity {
 
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
+	
+	@ManyToOne(optional = false)
 	private Fellow fellow;
+	
+	@ManyToOne(optional = false)
 	private Community community;
+	
+	@Column(name = "admission_date")
+	@Temporal(value = TemporalType.TIMESTAMP)
 	private Date admissionDate;
+	
+	@Column(name = "owner")
 	private Boolean isOwner;
 	
 	public FellowCommunity() {}

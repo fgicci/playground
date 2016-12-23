@@ -2,16 +2,41 @@ package com.gicci.playground.model;
 
 import java.util.List;
 
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.OneToMany;
+
 public class Fellow {
 
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
+	
+	@Column(name = "first_name")
 	private String firstName;
+	
+	@Column(name = "last_name")
 	private String LastName;
+	
+	@Column(name = "nick_name")
 	private String nickName;
+	
+	@Column(name = "email")
 	private String email;
+	
+	@Column(name = "enable")
 	private Boolean isEnable;
+	
+	@Column(name = "password")
 	private String password;
+	
+	@OneToMany(mappedBy = "fellow", cascade = CascadeType.ALL, orphanRemoval = true)
 	private List<FellowCommunity> communities;
+	
+	@OneToMany(mappedBy = "sport", cascade = CascadeType.ALL, orphanRemoval = true)
 	private List<FellowSport> favouriteSports;
 	
 	public Fellow() {}
