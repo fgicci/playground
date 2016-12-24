@@ -10,7 +10,7 @@ public class CommunityAddress {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Integer id;
+	private Long id;
 	
 	@ManyToOne(optional = false)
 	private Community community;
@@ -53,11 +53,11 @@ public class CommunityAddress {
 		this.longitude = longitude;
 	}
 
-	public Integer getId() {
+	public Long getId() {
 		return id;
 	}
 
-	public void setId(Integer id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 
