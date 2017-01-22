@@ -17,7 +17,7 @@ import javax.persistence.TemporalType;
 public class FellowCommunity {
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
 	
 	@ManyToOne(optional = false)
@@ -30,7 +30,7 @@ public class FellowCommunity {
 	@Temporal(value = TemporalType.TIMESTAMP)
 	private Date admissionDate;
 	
-	@Column(name = "owner")
+	@Column(name = "is_owner")
 	private Boolean isOwner;
 	
 	public FellowCommunity() {}

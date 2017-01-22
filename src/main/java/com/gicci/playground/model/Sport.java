@@ -6,7 +6,8 @@ public enum Sport {
 	FOOTBALL ("FootBall"),
 	HANDBALL ("HandBall"),
 	RUNNING ("Running"),
-	VOLLEYBALL ("VolleyBall");
+	VOLLEYBALL ("VolleyBall"),
+	GYM ("Gym");
 	
 	private String description;
 	

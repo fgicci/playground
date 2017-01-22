@@ -13,12 +13,14 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 @Table(name = "community")
 public class Community {
 
 	@Id
-	@GeneratedValue(strategy =GenerationType.IDENTITY)
+	@GeneratedValue(strategy =GenerationType.AUTO)
 	private Long id;
 	
 	@Column(name = "name")
@@ -28,9 +30,11 @@ public class Community {
 	@Enumerated(EnumType.STRING)
 	private Sport sport;
 	
+	@JsonIgnore
 	@OneToMany(mappedBy = "community", cascade = CascadeType.ALL, orphanRemoval = true)
 	private List<FellowCommunity> partners;
 	
+	@JsonIgnore
 	@OneToMany(mappedBy = "community", cascade = CascadeType.ALL, orphanRemoval = true)
 	private List<CommunityAddress> addresses;
 	

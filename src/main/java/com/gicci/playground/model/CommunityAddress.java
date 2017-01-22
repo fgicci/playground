@@ -1,15 +1,19 @@
 package com.gicci.playground.model;
 
 import javax.persistence.Column;
+import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import javax.persistence.Table;
 
+@Entity
+@Table(name = "community_address")
 public class CommunityAddress {
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
 	
 	@ManyToOne(optional = false)
@@ -18,7 +22,7 @@ public class CommunityAddress {
 	@Column(name = "address_line_one")
 	private String addressLineOne;
 	
-	@Column(name = "address_line_one")
+	@Column(name = "address_line_two")
 	private String addressLineTwo;
 	
 	@Column(name = "town")
