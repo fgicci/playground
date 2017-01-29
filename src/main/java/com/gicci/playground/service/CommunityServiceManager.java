@@ -54,9 +54,7 @@ public class CommunityServiceManager implements CommunityService {
 	@Override
 	public List<Fellow> getFellowListByCommunity(Long communityId) throws RecordNotFound {
 		List<Fellow> fellows = new ArrayList<Fellow>();
-		for (FellowCommunity fellowCommunity : findById(communityId).getPartners()) {
-			fellows.add(fellowCommunity.getFellow());
-		}
+		findById(communityId).getPartners().forEach(fellowCommunity -> fellows.add(fellowCommunity.getFellow()));
 		return fellows;
 	}
 }
