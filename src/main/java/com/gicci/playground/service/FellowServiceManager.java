@@ -22,12 +22,12 @@ public class FellowServiceManager implements FellowService {
 	}
 
 	@Override
-	public Fellow delete(Integer id) throws RecordNotFound {
+	public Fellow delete(Long id) throws RecordNotFound {
 		return null;
 	}
 
 	@Override
-	public Fellow findById(Integer id) throws RecordNotFound {
+	public Fellow findById(Long id) throws RecordNotFound {
 		return null;
 	}
 

@@ -11,6 +11,8 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 @Table(name = "fellow")
 public class Fellow {
@@ -38,9 +40,11 @@ public class Fellow {
 	private String password;
 	
 	@OneToMany(mappedBy = "fellow", cascade = CascadeType.ALL, orphanRemoval = true)
+	@JsonIgnore
 	private List<FellowCommunity> communities;
 	
 	@OneToMany(mappedBy = "sport", cascade = CascadeType.ALL, orphanRemoval = true)
+	@JsonIgnore
 	private List<FellowSport> favouriteSports;
 	
 	public Fellow() {}

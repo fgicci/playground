@@ -1,5 +1,6 @@
 package com.gicci.playground.service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,11 +10,15 @@ import org.springframework.transaction.annotation.Transactional;
 import com.gicci.playground.exception.RecordConstraint;
 import com.gicci.playground.exception.RecordNotFound;
 import com.gicci.playground.model.Community;
+import com.gicci.playground.model.Fellow;
+import com.gicci.playground.model.FellowCommunity;
 import com.gicci.playground.repository.CommunityRepository;
 
 @Service
 public class CommunityServiceManager implements CommunityService {
 
+	private String RECORD_NOT_FOUND = "Record Not Found!";
+	
 	@Autowired
 	private CommunityRepository communityRepository;
 	
@@ -28,18 +33,30 @@ public class CommunityServiceManager implements CommunityService {
 	}
 
 	@Override
-	public Community delete(Integer id) throws RecordNotFound {
+	public Community delete(Long id) throws RecordNotFound {
 		return null;
 	}
 
 	@Override
-	public Community findById(Integer id) throws RecordNotFound {
-		return null;
+	@Transactional(readOnly = true)
+	public Community findById(Long id) throws RecordNotFound {
+		Community community = communityRepository.findOne(id);
+		if (community == null) throw new RecordNotFound(RECORD_NOT_FOUND);
+		return community;
 	}
 
 	@Override
 	@Transactional(readOnly = true)
 	public List<Community> findAll() {
 		return communityRepository.findAll();
+	}
+
+	@Override
+	public List<Fellow> getFellowListByCommunity(Long communityId) throws RecordNotFound {
+		List<Fellow> fellows = new ArrayList<Fellow>();
+		for (FellowCommunity fellowCommunity : findById(communityId).getPartners()) {
+			fellows.add(fellowCommunity.getFellow());
+		}
+		return fellows;
 	}
 }
