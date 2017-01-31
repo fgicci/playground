@@ -11,7 +11,6 @@ import com.gicci.playground.exception.RecordConstraint;
 import com.gicci.playground.exception.RecordNotFound;
 import com.gicci.playground.model.Community;
 import com.gicci.playground.model.Fellow;
-import com.gicci.playground.model.FellowCommunity;
 import com.gicci.playground.repository.CommunityRepository;
 
 @Service
