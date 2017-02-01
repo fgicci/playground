@@ -7,7 +7,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.gicci.playground.exception.RecordConstraint;
 import com.gicci.playground.exception.RecordNotFound;
 import com.gicci.playground.model.Community;
 import com.gicci.playground.model.Fellow;
@@ -16,13 +15,11 @@ import com.gicci.playground.repository.CommunityRepository;
 @Service
 public class CommunityServiceManager implements CommunityService {
 
-	private String RECORD_NOT_FOUND = "Record Not Found!";
-	
 	@Autowired
 	private CommunityRepository communityRepository;
 	
 	@Override
-	public Community create(Community type) throws RecordConstraint {
+	public Community create(Community type) {
 		return null;
 	}
 
@@ -40,7 +37,7 @@ public class CommunityServiceManager implements CommunityService {
 	@Transactional(readOnly = true)
 	public Community findById(Long id) throws RecordNotFound {
 		Community community = communityRepository.findOne(id);
-		if (community == null) throw new RecordNotFound(RECORD_NOT_FOUND);
+		if (community == null) throw new RecordNotFound("param 'id' = " + id);
 		return community;
 	}
 

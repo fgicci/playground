@@ -4,7 +4,6 @@ import java.util.List;
 
 import org.springframework.stereotype.Service;
 
-import com.gicci.playground.exception.RecordConstraint;
 import com.gicci.playground.exception.RecordNotFound;
 import com.gicci.playground.model.Fellow;
 
@@ -12,7 +11,7 @@ import com.gicci.playground.model.Fellow;
 public class FellowServiceManager implements FellowService {
 
 	@Override
-	public Fellow create(Fellow type) throws RecordConstraint {
+	public Fellow create(Fellow type) {
 		return null;
 	}
 
