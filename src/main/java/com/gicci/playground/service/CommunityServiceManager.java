@@ -3,7 +3,10 @@ package com.gicci.playground.service;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.persistence.LockModeType;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.jpa.repository.Lock;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -19,18 +22,25 @@ public class CommunityServiceManager implements CommunityService {
 	private CommunityRepository communityRepository;
 	
 	@Override
-	public Community create(Community type) {
+	@Transactional
+	public Community create(Community community) {
 		return null;
 	}
 
 	@Override
-	public Community update(Community type) throws RecordNotFound {
+	@Transactional(rollbackFor = RecordNotFound.class)
+	@Lock(LockModeType.PESSIMISTIC_WRITE)
+	public Community update(Community community) throws RecordNotFound {
 		return null;
 	}
 
 	@Override
+	@Transactional(rollbackFor = RecordNotFound.class)
+	@Lock(LockModeType.PESSIMISTIC_WRITE)
 	public Community delete(Long id) throws RecordNotFound {
-		return null;
+		Community community = findById(id);
+		communityRepository.delete(community);
+		return community;
 	}
 
 	@Override
