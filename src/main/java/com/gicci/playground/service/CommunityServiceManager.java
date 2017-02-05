@@ -24,7 +24,7 @@ public class CommunityServiceManager implements CommunityService {
 	@Override
 	@Transactional
 	public Community create(Community community) {
-		return null;
+		return communityRepository.save(community);
 	}
 
 	@Override
