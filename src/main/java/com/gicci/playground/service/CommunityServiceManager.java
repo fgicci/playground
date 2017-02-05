@@ -47,7 +47,7 @@ public class CommunityServiceManager implements CommunityService {
 	@Transactional(readOnly = true)
 	public Community findById(Long id) throws RecordNotFound {
 		Community community = communityRepository.findOne(id);
-		if (community == null) throw new RecordNotFound("param 'id' = " + id);
+		if (community == null) throw new RecordNotFound("Param 'id' = " + id);
 		return community;
 	}
 
@@ -58,9 +58,9 @@ public class CommunityServiceManager implements CommunityService {
 	}
 
 	@Override
-	public List<Fellow> getFellowListByCommunity(Long communityId) throws RecordNotFound {
+	public List<Fellow> getFellowListByCommunity(Long id) throws RecordNotFound {
 		List<Fellow> fellows = new ArrayList<Fellow>();
-		findById(communityId).getPartners().forEach(fellowCommunity -> fellows.add(fellowCommunity.getFellow()));
+		findById(id).getPartners().forEach(fellowCommunity -> fellows.add(fellowCommunity.getFellow()));
 		return fellows;
 	}
 }

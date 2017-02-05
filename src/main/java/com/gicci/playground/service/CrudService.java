@@ -6,8 +6,8 @@ import com.gicci.playground.exception.RecordNotFound;
 
 public interface CrudService<T> {
 
-	public T create(T type);
-	public T update(T type) throws RecordNotFound;
+	public T create(T object);
+	public T update(T object) throws RecordNotFound;
 	public T delete(Long id) throws RecordNotFound;
 	public T findById(Long id) throws RecordNotFound;
 	public List<T> findAll();
