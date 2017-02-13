@@ -43,9 +43,12 @@ public class CommunityAddress {
 	@Column(name = "longitude")
 	private Double longitude;
 	
+	@Column(name = "main")
+	private Boolean isMain;
+	
 	public CommunityAddress() {}
 
-	public CommunityAddress(Community community, String addressLineOne, String addressLineTwo, String town, String county, String postCode, String country, Double latitude, Double longitude) {
+	public CommunityAddress(Community community, String addressLineOne, String addressLineTwo, String town, String county, String postCode, String country, Double latitude, Double longitude, Boolean isMain) {
 		this.community = community;
 		this.addressLineOne = addressLineOne;
 		this.addressLineTwo = addressLineTwo;
@@ -55,6 +58,7 @@ public class CommunityAddress {
 		this.country = country;
 		this.latitude = latitude;
 		this.longitude = longitude;
+		this.isMain = isMain;
 	}
 
 	public Long getId() {
@@ -137,6 +141,14 @@ public class CommunityAddress {
 		this.longitude = longitude;
 	}
 
+	public Boolean getIsMain() {
+		return isMain;
+	}
+
+	public void setIsMain(Boolean isMain) {
+		this.isMain = isMain;
+	}
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -164,8 +176,9 @@ public class CommunityAddress {
 
 	@Override
 	public String toString() {
-		return "CommunityAddress [id=" + id + ", community=" + community + ", addressLineOne=" + addressLineOne
+		return "CommunityAddress [id=" + id + ", community=" + community.getName() + ", addressLineOne=" + addressLineOne
 				+ ", addressLineTwo=" + addressLineTwo + ", town=" + town + ", county=" + county + ", postCode="
-				+ postCode + ", country=" + country + "]";
+				+ postCode + ", country=" + country + ", latitude=" + latitude + ", longitude=" + longitude
+				+ ", isMain=" + isMain + "]";
 	}
 }

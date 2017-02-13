@@ -1,4 +1,4 @@
-package com.gicci.playground.controller;
+package com.gicci.playground.rest;
 
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;

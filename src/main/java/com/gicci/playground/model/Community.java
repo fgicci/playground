@@ -1,5 +1,6 @@
 package com.gicci.playground.model;
 
+import java.util.Date;
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -12,6 +13,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
@@ -20,8 +23,22 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 public class Community {
 
 	@Id
-	@GeneratedValue(strategy =GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
+	
+	@JsonIgnore
+	@Column(name = "user_id")
+	private String userId;
+	
+	@JsonIgnore
+	@Column(name = "insert_date")
+	@Temporal(TemporalType.TIMESTAMP)
+	private Date insertDate;
+	
+	@JsonIgnore
+	@Column(name = "update_date")
+	@Temporal(TemporalType.TIMESTAMP)
+	private Date updateDate;
 	
 	@Column(name = "name")
 	private String name;
@@ -51,6 +68,30 @@ public class Community {
 
 	public void setId(Long id) {
 		this.id = id;
+	}
+
+	public String getUserId() {
+		return userId;
+	}
+
+	public void setUserId(String userId) {
+		this.userId = userId;
+	}
+
+	public Date getInsertDate() {
+		return insertDate;
+	}
+
+	public void setInsertDate(Date insertDate) {
+		this.insertDate = insertDate;
+	}
+
+	public Date getUpdateDate() {
+		return updateDate;
+	}
+
+	public void setUpdateDate(Date updateDate) {
+		this.updateDate = updateDate;
 	}
 
 	public String getName() {
@@ -136,6 +177,7 @@ public class Community {
 
 	@Override
 	public String toString() {
-		return "Community [id=" + id + ", name=" + name + ", sport=" + sport + "]";
+		return "Community [id=" + id + ", userId=" + userId + ", insertDate=" + insertDate + ", updateDate="
+				+ updateDate + ", name=" + name + ", sport=" + sport + "]";
 	}
 }
