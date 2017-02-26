@@ -51,7 +51,9 @@ public class CommunityServiceManager implements CommunityService {
 	@Transactional(rollbackFor = RecordNotFound.class)
 	@Lock(LockModeType.PESSIMISTIC_WRITE)
 	public Community update(Community community) throws RecordNotFound {
-		return null;
+		community.setUserId(USER_ID);
+		community.setUpdateDate(new Date());
+		return communityRepository.save(community);
 	}
 
 	@Override
